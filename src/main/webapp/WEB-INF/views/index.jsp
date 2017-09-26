@@ -61,8 +61,10 @@
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 	<script>
 		
+		var emotionType = {angry:"화남", disgust:"싫음", fear:"겁먹음", laugh:"웃긴", neutral:"무표정", sad:"슬픔", surprise:"놀람", smile:"미소", talking:"말함"};
+		
         $('#cameraBtn').change(function(e) {
-        	
+        	    	      	
         	$('.searching-bg').css({"display": "block"});	//투명배경 on
         	$('.load').css({"display":"block"});
         	
@@ -97,7 +99,7 @@
 					$('#sex-confidence').html(Math.round(jsonObject.gender.confidence * 100));
 					$('#age').html(age);
 					$('#age-confidence').html(Math.round(jsonObject.age.confidence * 100));
-					$('#emotion').html(emotion);
+					$('#emotion').html(searchEmotion(emotion));
 					$('#emotion-confidence').html(Math.round(jsonObject.emotion.confidence * 100));
 					
 					
@@ -144,7 +146,7 @@
 					$('#sex-confidence').html(Math.round(jsonObject.gender.confidence * 100));
 					$('#age').html(age);
 					$('#age-confidence').html(Math.round(jsonObject.age.confidence * 100));
-					$('#emotion').html(emotion);
+					$('#emotion').html(searchEmotion(emotion));
 					$('#emotion-confidence').html(Math.round(jsonObject.emotion.confidence * 100));
 					
 					
@@ -161,6 +163,16 @@
                 window.URL = window.webkitURL;
             }
         });
+        
+        function searchEmotion(emotion) {
+        	for(var key in emotionType) {
+        		console.log(key);
+        		if(emotion == key) {
+        			console.log(emotionType[key])
+        			return emotionType[key];
+        		}
+        	}
+        }
 	</script>
 </body>
 </html>
