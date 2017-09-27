@@ -125,9 +125,11 @@
 			var emotion = jsonObject.emotion.value;
 			
 			if(gender == 'male') {
-				$('#sex').html('남성');
+				$('#sex').html('<i class="fa fa-male"></i>');
+				$('.sex').css({'background-color': '#00bcd4'})
 			} else {
-				$('#sex').html('여성');
+				$('#sex').html('<i class="fa fa-female"></i>');
+				$('.sex').css({'background-color':"#e91e63"})
 			}
 			
 			$('#sex-confidence').html(Math.round(jsonObject.gender.confidence * 100) + '%');

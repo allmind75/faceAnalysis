@@ -13,16 +13,17 @@ import java.net.URLConnection;
 
 public class NaverClovaFaceRecognition {
 	
+	private static final String clientId = "FO7cAb22uRkM9bualuip";
+	private static final String clientSecret = "xDLSrx9zKB";
+	
 	public static String searchCeleb(String path, String uploadPath) {
 		// 네이버 얼굴인식 API
-		String clientId = "FO7cAb22uRkM9bualuip";
-		String clientSecret = "xDLSrx9zKB";
+
 		String result = null;
 
 		try {
 			String paramName = "image";
 			String imgFile = uploadPath + path;
-			
 			
 			System.out.println("PATH : " + imgFile);
 

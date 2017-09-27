@@ -32,10 +32,12 @@ line-height:30px; text-align:center; vertical-align:middle; background-color: no
 .result-wrap ul li {width: 100px; height: 100px; display: inline-block; border-radius: 100%;
  text-align: center; background-color: #009688; color: #fff; vertical-align: middle; position: relative;}
 .result-wrap ul li:nth-child(2) {margin-left: 8px; margin-right: 8px;}
-.result-wrap ul li div {position: absolute; top: 45%; left: 50%; margin-left: -5px;}
+.result-wrap ul li div {position: absolute; top: 45%; left: 50%; margin-left: -7.5px;}
 .result-wrap ul li.sex {background-color: #e91e63;}
-.result-wrap ul li.age {background-color: #03a9f4;}
-.result-wrap ul li.emotion {background-color: #673ab7;}
+.result-wrap ul li.age {background-color: #ff9800;}
+.result-wrap ul li.emotion {background-color: #8bc34a;}
+
+.result-wrap ul li i {color: #fff; font-size: 22px;}
 
 .result-wrap ul li p {font-weight: bold; font-size: 16px; }
 .result-wrap ul li p:nth-child(1) {width: 100%; position: absolute; top: 16%;}
@@ -58,11 +60,20 @@ line-height:30px; text-align:center; vertical-align:middle; background-color: no
   display: none;
   z-index: 150;
 }
-@keyframes spin {
+
+@-webkit-keyframes spin {
   0%   {transform: rotate(0deg);}
   100% {transform: rotate(360deg);}
 }
-@-webkit-keyframes spin {
+@-moz-keyframes spin {
+  0%   {transform: rotate(0deg);}
+  100% {transform: rotate(360deg);}
+}
+@-o-keyframes spin {
+  0%   {transform: rotate(0deg);}
+  100% {transform: rotate(360deg);}
+}
+@keyframes spin {
   0%   {transform: rotate(0deg);}
   100% {transform: rotate(360deg);}
 }
