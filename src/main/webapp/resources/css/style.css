@@ -9,12 +9,12 @@ a {outline: 0; text-decoration: none; color:#555;}
 img {border: 0;}
 body {font-family: 'Nanumgothic';}
 
-h1 {font-size: 18px; text-align: center; background: #212121; font-family: 'Orbitron'; color: #fff;
+h1 {font-size: 22px; text-align: center; background: #212121; font-family: 'Orbitron'; color: #fff;
 width: 100%; height: 45px; line-height: 45px; letter-spacing: 1.3px;}
 .line {display: block; width: 15px; height: 2px; background-color: #fff;}
-#pic {width: 100%; height: auto; max-height: 380px;}
+#pic {width: 100%; height: auto; max-height: 400px;}
 
-.fileBox {width: 375px; height: auto; margin-top: 50px; position: absolute; top: 63%;}
+.fileBox {width: 375px; height: auto; margin-top: 50px; position: fixed; bottom: 200px;}
 .fileBox .fileName {display: inline-block; width: 190px; height: 30px; padding-left: 10px; margin-right: 5px;;
 line-height: 30px; border: 1px solid #aaa; background-color: #fff; vertical-align: middle}
 .fileBox .btn_file {position: absolute; display:inline-block; border:0; width:50px; height:50px; font-size:0.8em;
@@ -27,7 +27,7 @@ line-height:30px; text-align:center; vertical-align:middle; background-color: no
 
 #camera {background: url(if_camera.png);}
 
-.result-wrap {position: absolute; top: 80%; width: 100%; height: auto;}
+.result-wrap {position: fixed; bottom: 40px; width: 100%; height: auto;}
 .result-wrap ul {width: 100%; height: auto; text-align: center;}
 .result-wrap ul li {width: 100px; height: 100px; display: inline-block; border-radius: 100%;
  text-align: center; background-color: #009688; color: #fff; vertical-align: middle; position: relative;}
@@ -67,4 +67,4 @@ line-height:30px; text-align:center; vertical-align:middle; background-color: no
   100% {transform: rotate(360deg);}
 }
 
-.naver-api {width: 100%; height: auto; position: absolute; bottom: 1%; display: block; text-align: center}
+.naver-api-img {width: 150px; height: auto; position: fixed; bottom: 10px; left: 50%; margin-left: -75px}

@@ -34,17 +34,17 @@
             <li class="sex">
                 <p id="sex">?</p>
                 <div class="line"></div>
-                <p class="confidence">정확도 <span id="sex-confidence">?</span>%</p>
+                <p class="confidence">정확도 <span id="sex-confidence">?</span></p>
             </li>
             <li class="age">
-                <p id="age">?<span>세</span></p>
+                <p id="age">?</p>
                 <div class="line"></div>
-                <p class="confidence">정확도 <span id="age-confidence">?</span>%</p>
+                <p class="confidence">정확도 <span id="age-confidence">?</span></p>
             </li>
             <li class="emotion">
                 <p id="emotion">?</p>
                 <div class="line"></div>
-                <p class="confidence">정확도 <span id="emotion-confidence">?</span>%</p>
+                <p class="confidence">정확도 <span id="emotion-confidence">?</span></p>
             </li>
         </ul>
     </section>
@@ -52,8 +52,8 @@
 	<div class="searching-bg"></div>
 	<div class="load"></div>
 	
-    <a class="naver-api" href="http://developers.naver.com" target="_blank">
-        <img src="#" alt="NAVER 오픈 API">
+    <a href="http://developers.naver.com" target="_blank">
+        <img class="naver-api-img" src="../resources/images/naverOpenAPI2.png" alt="NAVER 오픈 API">
     </a>
 
 
@@ -61,9 +61,9 @@
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 	<script>
 		
-		var emotionType = {angry:"화남", disgust:"싫음", fear:"겁먹음", laugh:"웃긴", neutral:"무표정", sad:"슬픔", surprise:"놀람", smile:"미소", talking:"말함"};
+		var emotionType = {angry:"화남", disgust:"싫어", fear:"겁먹음", laugh:"웃겨", neutral:"무표정", sad:"슬퍼", surprise:"놀람", smile:"방긋", talking:"말함"};
 		
-        $('#cameraBtn').change(function(e) {
+        $('#cameraBtn, #albumBtn').change(function(e) {
         	    	      	
         	$('.searching-bg').css({"display": "block"});	//투명배경 on
         	$('.load').css({"display":"block"});
@@ -85,83 +85,28 @@
 				success: function(data) {
 					  					
 					var jsonData = JSON.parse(data);
-					var jsonObject = jsonData.faces[0];			
-					var gender = jsonObject.gender.value;
-					var age = jsonObject.age.value;
-					var emotion = jsonObject.emotion.value;
 					
-					if(gender == 'male') {
-						$('#sex').html('남성');
+					if(jsonData.info.faceCount == 1) {
+						alert("완료되었습니다.");
+						var jsonObject = jsonData.faces[0];									
+						addResult(jsonObject);												
 					} else {
-						$('#sex').html('여성');
+						alert('사진 인식에 실패하였습니다.')
+						$('#pic').attr('src', '');						
 					}
-					
-					$('#sex-confidence').html(Math.round(jsonObject.gender.confidence * 100));
-					$('#age').html(age);
-					$('#age-confidence').html(Math.round(jsonObject.age.confidence * 100));
-					$('#emotion').html(searchEmotion(emotion));
-					$('#emotion-confidence').html(Math.round(jsonObject.emotion.confidence * 100));
-					
-					
-					alert("완료!");
 					$('.searching-bg').css({"display": "none"}); 	//투명 배경 off
 					$('.load').css({"display":"none"});
 				}
 			});
         });
-        
-        $('#albumBtn').change(function(e) {
-        	
-        	$('.searching-bg').css({"display": "block"});	//투명배경 on
-        	$('.load').css({"display":"block"});
-        	
-        	var imgFile = URL.createObjectURL(e.target.files[0]);	//파일 이름
-        	var file = e.target.files[0];			//파일 가져오기
-			var formData = new FormData();
-			formData.append("file", file);
-			
-			$('#pic').attr('src', imgFile);
-			
-			$.ajax({
-				url: '/uploadFile',
-				data: formData,
-				dataType: 'text',
-				processData: false,
-				contentType: false,
-				type: 'POST',
-				success: function(data) {
-					  					
-					var jsonData = JSON.parse(data);
-					var jsonObject = jsonData.faces[0];			
-					var gender = jsonObject.gender.value;
-					var age = jsonObject.age.value;
-					var emotion = jsonObject.emotion.value;
-					
-					if(gender == 'male') {
-						$('#sex').html('남성');
-					} else {
-						$('#sex').html('여성');
-					}
-					
-					$('#sex-confidence').html(Math.round(jsonObject.gender.confidence * 100));
-					$('#age').html(age);
-					$('#age-confidence').html(Math.round(jsonObject.age.confidence * 100));
-					$('#emotion').html(searchEmotion(emotion));
-					$('#emotion-confidence').html(Math.round(jsonObject.emotion.confidence * 100));
-					
-					
-					alert("완료!");
-					$('.searching-bg').css({"display": "none"}); 	//투명 배경 off
-					$('.load').css({"display":"none"});
-				}
-			});
-        });
-        
         
         $(document).ready(function() {
             if (!('url' in window) && ('webkitURL' in window)) {
                 window.URL = window.webkitURL;
             }
+            
+			$('.searching-bg').css({"display": "none"}); 	//투명 배경 off
+			$('.load').css({"display":"none"})
         });
         
         function searchEmotion(emotion) {
@@ -172,6 +117,24 @@
         			return emotionType[key];
         		}
         	}
+        }
+        
+        function addResult(jsonObject) {
+			var gender = jsonObject.gender.value;
+			var age = jsonObject.age.value;
+			var emotion = jsonObject.emotion.value;
+			
+			if(gender == 'male') {
+				$('#sex').html('남성');
+			} else {
+				$('#sex').html('여성');
+			}
+			
+			$('#sex-confidence').html(Math.round(jsonObject.gender.confidence * 100) + '%');
+			$('#age').html(age + '세');
+			$('#age-confidence').html(Math.round(jsonObject.age.confidence * 100) + '%');
+			$('#emotion').html(searchEmotion(emotion));
+			$('#emotion-confidence').html(Math.round(jsonObject.emotion.confidence * 100) + '%');
         }
 	</script>
 </body>
