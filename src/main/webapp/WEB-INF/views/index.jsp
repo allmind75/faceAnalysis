@@ -4,34 +4,27 @@
 <html>
 <head>
 	<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <title>Facial Analysis</title>
-	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-	<style>
-		.iphone {
-			position: fixed;
-			width: 100%;
-			height: 100%;
-			background: #fff;
-			margin-top: 60px
-		}
-
-		.iphoneInner {
-			width: 430px;
-			height: 887px;
-			margin-top: 50px;
-			background: url(../resources/images/iphone6.png) no-repeat;
-			margin: 0 auto;
-			padding-top: 105px;
-			padding-left: 27px;
-		}
-
-		.fa {
-			font-size: 26px;
-			position: absolute;
-			top: 50px;
-			right: 100px;
-		}
-	</style>
+    <title>Face Analysis</title>
+	<link rel="stylesheet" href="../resources/css/style.css" type="text/css">
+	<script type="text/javascript" src="../resources/js/prefixfree.min.js"></script>
+	
+    <link rel="apple-touch-icon" sizes="57x57" href="../resources/images/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="../resources/images/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="../resources/images/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="../resources/images/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="../resources/images/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="../resources/images/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="../resources/images/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="../resources/images/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../resources/images/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="../resources/images/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../resources/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="../resources/images/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../resources/images/favicon-16x16.png">
+    <link rel="manifest" href="../resources/images/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="../resources/images/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">	
 </head>
 
 <body>
@@ -40,17 +33,5 @@
 			<iframe src="http://localhost:8080/m_index" width=376 height=668 frameborder=0></iframe>
 		</div>
 	</div>
-
-	<script>
-		window.onload = function() {
-			var mobileKeyWords = new Array('iPhone', 'iPod', 'BlackBerry', 'Android', 'Windows CE', 'LG', 'MOT', 'SAMSUNG', 'SonyEricsson');
-			for (var word in mobileKeyWords) {
-				if (navigator.userAgent.match(mobileKeyWords[word]) != null) {
-					//location.href = 'http://localhost:8080/m_index';
-					break;
-				}
-			}
-		}
-	</script>
 </body>
 </html>
