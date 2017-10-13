@@ -44,7 +44,7 @@ public class UploadController {
 
 		String fileName = UploadFileUtils.uploadFile(uploadPath, file.getOriginalFilename(), file.getBytes());
 		String result = NaverClovaFaceRecognition.searchCeleb(fileName, uploadPath);
-
+		
 		
 		System.out.println(result);
 		
